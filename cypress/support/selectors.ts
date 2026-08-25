@@ -84,6 +84,9 @@ Cypress.Commands.add('byTestDropDownMenu', (selector: string) => {
 });
 
 Cypress.Commands.add('clickNavLink', (path: [string, string?]) => {
+  // PF6 page loaders use a bullseye overlay that covers the sidebar.
+  cy.get('.pf-v6-c-spinner', { timeout: 160000 }).should('not.exist'); // eslint-disable-line cypress/require-data-selectors
+  cy.get('.co-m-loader', { timeout: 160000 }).should('not.exist'); // eslint-disable-line cypress/require-data-selectors
   cy.byTestID('nav')
     .contains(path[0], { timeout: 10 * 1000 })
     .should((el) => {
@@ -92,7 +95,7 @@ Cypress.Commands.add('clickNavLink', (path: [string, string?]) => {
       }
     });
   if (path.length > 1) {
-    cy.get('#page-sidebar').contains(path[1]).click(); // eslint-disable-line cypress/require-data-selectors
+    cy.get('#page-sidebar').contains(path[1]).click({ timeout: 160000 }); // eslint-disable-line cypress/require-data-selectors
   }
 });
 

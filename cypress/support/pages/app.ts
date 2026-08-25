@@ -8,6 +8,7 @@ export const app = {
     cy.get('.odf-m-loader', { timeout }).should('not.exist');
     cy.get('.pf-c-spinner', { timeout }).should('not.exist');
     cy.get('.pf-v5-c-spinner', { timeout }).should('not.exist');
+    cy.get('.pf-v6-c-spinner', { timeout }).should('not.exist');
     cy.get('.skeleton-catalog--grid', { timeout }).should('not.exist');
     cy.get('.loading-skeleton--table', { timeout }).should('not.exist');
     /* eslint-enable cypress/require-data-selectors */

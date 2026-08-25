@@ -9,6 +9,7 @@ import {
 } from './consts';
 import './support/selectors';
 import './support/login';
+import { app } from './support/pages/app';
 
 const disableIrrelevantLogging = () => {
   // Disable the default behavior of logging all XMLHttpRequests and fetches.
@@ -23,6 +24,7 @@ beforeEach(() => {
   disableIrrelevantLogging();
   cy.login();
   cy.visit('/');
+  app.waitForLoad();
   cy.install();
 });
 
